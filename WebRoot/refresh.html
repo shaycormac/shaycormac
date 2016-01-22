@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>跳转页面</title>
+<meta http-equiv="refresh" content="5;url=https://www.baidu.com"/>
+<script type="text/javascript" charset="utf-8">
+  var time =5;
+	function setTime () 
+	{
+	    var span =document.getElementById("span");
+	    span.innerHTML=time;
+	    time--;
+	  window.setTimeout("setTime()",1000);
+	}
+
+</script>
+</head>
+<body onload="setTime();">
+该页面将在<span id="span"><font color="red"></font></span>秒钟后跳转到页面。
+</body>
+</html>
