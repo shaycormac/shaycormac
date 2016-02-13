@@ -6,7 +6,9 @@ import java.io.OutputStream;
 import java.net.URL;
 import java.net.URLEncoder;
 
+import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebInitParam;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -15,7 +17,10 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class DownFileServlet
  */
-@WebServlet("/DownFileServlet")
+@WebServlet(name="myServlet",urlPatterns={"/DownFileServlet","/aha"},loadOnStartup=1,
+initParams={@WebInitParam(name="tom",value="123"),@WebInitParam(name="lili",value="456")})
+
+
 public class DownFileServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -42,6 +47,12 @@ public class DownFileServlet extends HttpServlet {
 		}
 		out.close();
 		in.close();
+		
+		//获得初始化参数
+		ServletConfig sConfig=this.getServletConfig();
+		String username=sConfig.getInitParameter("tom");
+		System.out.println(username);
+		
 		
 	}
 
